@@ -82,6 +82,17 @@ public class ComplexTest {
   }
 
   @Test
+  public void testSubtractAnotherComplex() {
+    Complex first = new Complex(0.32, 55.13);
+    Complex second = new Complex(-134.33, 12.01);
+
+    Complex result = first.subtract(second);
+
+    assertEquals(first.getReal()-second.getReal(), result.getReal(), delta);
+    assertEquals(first.getImaginary()-second.getImaginary(), result.getImaginary(), delta);
+  }
+
+  @Test
   public void testAddShouldNotChangeOriginalObjects() {
     Complex first = new Complex(0.32, 55.13);
     String firstString = first.toString();
@@ -90,6 +101,20 @@ public class ComplexTest {
     String secondString = second.toString();
 
     Complex result = first.add(second);
+
+    assertEquals(firstString, first.toString());
+    assertEquals(secondString, second.toString());
+  }
+
+  @Test
+  public void testSubtractShouldNotChangeOriginalObjects() {
+    Complex first = new Complex(0.32, -55.13);
+    String firstString = first.toString();
+
+    Complex second = new Complex(-134.33, 12.01);
+    String secondString = second.toString();
+
+    Complex result = first.subtract(second);
 
     assertEquals(firstString, first.toString());
     assertEquals(secondString, second.toString());
@@ -129,7 +154,29 @@ public class ComplexTest {
     assertEquals(-11, result.getReal(), delta);
     assertEquals(23, result.getImaginary(), delta);
   }
-  
+
+  @Test
+  public void testMultiplyByFactor() {
+    Complex first = new Complex(3, 2);
+    double factor = 2;
+
+    Complex result = first.multiply(factor);
+
+    assertEquals(6, result.getReal(), delta);
+    assertEquals(4, result.getImaginary(), delta);
+  }
+
+  @Test
+  public void testDivideAnotherComplex() {
+    Complex first = new Complex(25, -3);
+    Complex second = new Complex(1, 7);
+
+    Complex result = first.divide(second);
+
+    assertEquals(0.08, result.getReal(), delta);
+    assertEquals(-3.56, result.getImaginary(), delta);
+  }
+
   @Test
   public void testDivideByFactor() {
     Complex first = new Complex(25, -3);

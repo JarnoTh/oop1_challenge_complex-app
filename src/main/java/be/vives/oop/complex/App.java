@@ -30,8 +30,8 @@ public final class App {
       Complex product = base.multiply(number);
       System.out.println(base + " . " + number + " = " + product);
 
-      double factor = 10;
-      Complex dividedByFactor = base.divide(factor);
-      System.out.println(base + " / " + factor + " = " + dividedByFactor);
+      // double factor = 10;
+      // Complex dividedByFactor = base.divide(factor);
+      // System.out.println(base + " / " + factor + " = " + dividedByFactor);
     }
 }
