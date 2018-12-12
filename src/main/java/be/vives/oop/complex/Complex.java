@@ -6,78 +6,94 @@ import javax.swing.event.PopupMenuEvent;
  * Complex
  */
 public class Complex {
-    public void setReal(double real){
+    public void setReal(double real) {
         this.real = real;
     }
-    public double getReal(){
+
+    public double getReal() {
         return real;
     }
-    public void setImaginary(double imaginary){
+
+    public void setImaginary(double imaginary) {
         this.imaginary = imaginary;
     }
-    public double getImaginary(){
+
+    public double getImaginary() {
         return imaginary;
     }
-    public Complex (double real, double imaginary){
+
+    public Complex(double real, double imaginary) {
         setReal(real);
         setImaginary(imaginary);
     }
-    public Complex add(Complex second){
+
+    public Complex add(Complex second) {
         Complex result = new Complex();
         result.setReal(this.getReal() + second.getReal());
         result.setImaginary(this.getImaginary() + second.getImaginary());
         return result;
 
     }
-    public Complex subtract(Complex second){
+
+    public Complex subtract(Complex second) {
         Complex result = new Complex();
         result.setReal(this.getReal() - second.getReal());
         result.setImaginary(this.getImaginary() - second.getImaginary());
         return result;
 
     }
-    public Complex(){
-        this(0,0);
+
+    public Complex() {
+        this(0, 0);
     }
-    private String numberValue(){
-        if(getImaginary() > 0){
+
+    private String numberValue() {
+        if (getImaginary() > 0) {
             return " + ";
-        }
-        else{
-            return " - ";  
+        } else {
+            return " - ";
         }
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "(" + getReal() + numberValue() + Math.abs(getImaginary()) + "j" + ")";
     }
-    public Complex(Complex original){
+
+    public Complex(Complex original) {
         this(original.getReal(), original.getImaginary());
     }
-    public Complex multiply(Complex second){
-        Complex result = new Complex();       
+
+    public Complex multiply(Complex second) {
+        Complex result = new Complex();
         result.setReal((this.getReal() * second.getReal()) - (this.getImaginary() * second.getImaginary()));
         result.setImaginary((this.getReal() * second.getImaginary()) + (this.getImaginary() * second.getReal()));
         return result;
     }
-    public Complex multiply(double factor){
-        Complex result = new Complex();       
+
+    public Complex multiply(double factor) {
+        Complex result = new Complex();
         result.setReal(this.getReal() * factor);
         result.setImaginary(this.getImaginary() * factor);
         return result;
     }
-    public Complex divide(Complex second){
-        Complex result = new Complex();       
-        result.setReal((()/));
-        result.setImaginary();
+
+    public Complex divide(Complex second) {
+        Complex result = new Complex();
+        result.setReal(((this.getReal() * second.getReal()) + (this.getImaginary() * second.getImaginary()))
+                / ((second.getReal() * second.getReal()) + (second.getImaginary() * second.getImaginary())));
+        result.setImaginary(((this.getImaginary() * second.getReal()) - (this.getReal() * second.getImaginary())) 
+                / ((second.getReal() * second.getReal()) + (second.getImaginary() * second.getImaginary())));
         return result;
     }
-    public Complex divide(double factor){
-        Complex result = new Complex();       
+
+    public Complex divide(double factor) {
+        Complex result = new Complex();
         result.setReal(this.getReal() / factor);
         result.setImaginary(this.getImaginary() / factor);
-        return result;  
+        return result;
     }
+
     public double real = 0;
     public double imaginary = 0;
 }
